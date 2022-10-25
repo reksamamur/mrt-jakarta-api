@@ -20,9 +20,7 @@
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.37",
     "pino": "^8.6.0",
-    "redis": "^4.3.1",
-    "redis-om": "^0.3.6",
-    "sqlite3": "^5.1.1"
+    "redis": "^4.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
