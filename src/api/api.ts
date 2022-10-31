@@ -1,12 +1,14 @@
 import express from "express";
 import dotenv from "dotenv";
 
-import { RouteV1, NotFound } from "./v1";
+import { RouteV1, NotFound, Limiter } from "./v1";
 
 dotenv.config();
 
 const api = express();
 const port = process.env.PORT;
+
+api.use(Limiter);
 
 api.use("/v1", RouteV1);
 
