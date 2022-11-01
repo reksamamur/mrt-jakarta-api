@@ -3,21 +3,17 @@ import {
   Estimates,
   Facilities,
   Retails,
-  Stations,
   Station,
   Schedules,
-  Times,
 } from "../models";
 
-export class MRTClient {
+export class MRTClient extends MRTBaseClient {
   /**
    * async Get All Station
    */
   public async getStations(): Promise<Station[]> {
-    const baseClient = new MRTBaseClient();
     return new Promise<Station[]>((resolve, reject) => {
-      baseClient
-        .fetchBaseMRTs()
+      this.fetchBase
         .then((response) => {
           const station: Station[] = response.map((obj) => {
             return {
@@ -43,16 +39,25 @@ export class MRTClient {
    * async Get One Station by station ids
    */
   public async getStation(station_id: string | number): Promise<Station> {
-    const baseClient = new MRTBaseClient();
     return new Promise<Station>((resolve, reject) => {
-      baseClient
-        .fetchBaseMRTs()
+      this.fetchBase
         .then((response) => {
           const find = response.find((obj) => obj.nid === station_id);
 
           if (!find) return reject("Not Found");
 
-          return resolve(find);
+          const dStation: Station = {
+            nid: find.nid,
+            title: find.title,
+            isbig: find.isbig,
+            path: find.path,
+            urutan: find.urutan,
+            banner: find.banner,
+            catatan: find.catatan,
+            peta_lokalitas: find.peta_lokalitas,
+          };
+
+          return resolve(dStation);
         })
         .catch((error) => reject(error));
     });
@@ -64,10 +69,8 @@ export class MRTClient {
   public async getStationSchedules(
     station_id: string | number
   ): Promise<Schedules[]> {
-    const baseClient = new MRTBaseClient();
     return new Promise<Schedules[]>((resolve, reject) => {
-      baseClient
-        .fetchBaseMRTs()
+      this.fetchBase
         .then((response) => {
           const find = response.find((obj) => obj.nid === station_id);
 
@@ -85,10 +88,8 @@ export class MRTClient {
   public async getStationRetails(
     station_id: string | number
   ): Promise<Retails[]> {
-    const baseClient = new MRTBaseClient();
     return new Promise<Retails[]>((resolve, reject) => {
-      baseClient
-        .fetchBaseMRTs()
+      this.fetchBase
         .then((response) => {
           const find = response.find((obj) => obj.nid === station_id);
 
@@ -108,10 +109,8 @@ export class MRTClient {
   public async getStationFacilities(
     station_id: string | number
   ): Promise<Facilities[]> {
-    const baseClient = new MRTBaseClient();
     return new Promise<Facilities[]>((resolve, reject) => {
-      baseClient
-        .fetchBaseMRTs()
+      this.fetchBase
         .then((response) => {
           const find = response.find((obj) => obj.nid === station_id);
 
@@ -132,11 +131,8 @@ export class MRTClient {
     station_id: string | number,
     next_station_id: string | number
   ): Promise<Estimates> {
-    const baseClient = new MRTBaseClient();
-
     return new Promise((resolve, reject) => {
-      baseClient
-        .fetchBaseMRTs()
+      this.fetchBase
         .then((response) => {
           const find = response.find((obj) => obj.nid === station_id);
 
@@ -162,11 +158,8 @@ export class MRTClient {
   public getStationAllExtimates(
     station_id: string | number
   ): Promise<Estimates[]> {
-    const baseClient = new MRTBaseClient();
-
     return new Promise((resolve, reject) => {
-      baseClient
-        .fetchBaseMRTs()
+      this.fetchBase
         .then((response) => {
           const find = response.find((obj) => obj.nid === station_id);
 

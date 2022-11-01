@@ -10,12 +10,12 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export class MRTBaseClient extends StructureClient {
+  public fetchBase: Promise<Stations[]>;
+
   constructor(options?: ClientArgs) {
     super(options);
-  }
 
-  public async fetchBaseMRTs(): Promise<Stations[]> {
-    return new Promise<Stations[]>((resolve, reject) => {
+    this.fetchBase = new Promise<Stations[]>((resolve, reject) => {
       this.api
         .get<Stations[]>(`${process.env.URL_STATSIUNS}`)
         .then((response: AxiosResponse<Stations[]>) => resolve(response.data))

@@ -6,7 +6,6 @@ import Axios, {
 } from "axios";
 import {
   setupCache,
-  buildMemoryStorage,
   buildStorage,
 } from "axios-cache-interceptor";
 import pino from "pino";
@@ -32,10 +31,7 @@ export class StructureClient {
         headers: {
           "Content-Type": "application/json",
         },
-      }),
-      // {
-      //   storage: this.redisStorage(),
-      // }
+      })
     );
 
     this.logger = makeLog({
