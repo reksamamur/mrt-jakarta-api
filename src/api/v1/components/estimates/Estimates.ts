@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Success } from "../../../template";
+import { Success, Error } from "../../../template";
 
 import { RepoEstimates } from "../../repository";
 
@@ -14,7 +14,7 @@ const Estimates = async (req: Request, res: Response) => {
       .status(200)
       .json(Success(estimates, 200, "Success getting data"));
   } catch (error) {
-    return res.status(500).json(`${error}`);
+    return res.status(500).json(Error(500, `Failed, ${error}`));
   }
 };
 

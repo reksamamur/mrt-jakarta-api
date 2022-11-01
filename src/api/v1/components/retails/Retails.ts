@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 
 import { RepoRetails, RepoRetailsCache } from "../../repository";
 
-import { Success } from "../../../template";
+import { Success, Error } from "../../../template";
 
 const Retails = async (req: Request, res: Response) => {
   try {
@@ -10,7 +10,7 @@ const Retails = async (req: Request, res: Response) => {
 
     return res.status(200).json(Success(retails, 200, "Success getting data"));
   } catch (error) {
-    return res.status(500).json(`${error}`);
+    return res.status(500).json(Error(500, `Failed, ${error}`));
   }
 };
 
@@ -28,7 +28,7 @@ const RetailsCache = async (
       .status(200)
       .json(Success(JSON.parse(retails), 200, "Success getting data"));
   } catch (error) {
-    return res.status(500).json(`${error}`);
+    return res.status(500).json(Error(500, `Failed, ${error}`));
   }
 };
 

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { Success } from "../../../template";
+import { Success, Error } from "../../../template";
 
 import { RepoFacilities, RepoFacilitiesCache } from "../../repository";
 
@@ -11,7 +11,7 @@ const Facilities = async (req: Request, res: Response) => {
       .status(200)
       .json(Success(facilities, 200, "Success getting data"));
   } catch (error) {
-    return res.status(500).json(`${error}`);
+    return res.status(500).json(Error(500, `Failed, ${error}`));
   }
 };
 
@@ -29,7 +29,7 @@ const FacilitiesCache = async (
       .status(200)
       .json(Success(JSON.parse(facilities), 200, "Success getting data"));
   } catch (error) {
-    return res.status(500).json(`${error}`);
+    return res.status(500).json(Error(500, `Failed, ${error}`));
   }
 };
 
