@@ -1,7 +1,8 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 
 import { RouteV1, NotFound, Limiter } from "./v1";
+import path from "path";
 
 dotenv.config();
 
@@ -9,6 +10,8 @@ const api = express();
 const port = process.env.PORT;
 
 api.use(Limiter);
+
+api.use("/", express.static(path.join(__dirname, "public")));
 
 api.use("/v1", RouteV1);
 
