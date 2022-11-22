@@ -11,7 +11,7 @@ const port = process.env.PORT;
 
 api.use(Limiter);
 
-api.use("/", express.static(path.join(__dirname, "public")));
+api.use("/", express.static(path.join(__dirname, "documentation")));
 
 api.use("/v1", RouteV1);
 
