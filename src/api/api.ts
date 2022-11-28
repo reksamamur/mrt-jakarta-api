@@ -2,7 +2,6 @@ import express, { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 
 import { RouteV1, NotFound, Limiter } from "./v1";
-import path from "path";
 
 dotenv.config();
 
@@ -11,7 +10,9 @@ const port = process.env.PORT;
 
 api.use(Limiter);
 
-api.use("/", express.static(path.join(__dirname, "documentation")));
+api.use("/", (res: Response) => {
+  return res.redirect("/v1");
+});
 
 api.use("/v1", RouteV1);
 
