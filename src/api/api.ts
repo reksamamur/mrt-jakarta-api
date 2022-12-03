@@ -10,10 +10,6 @@ const port = process.env.PORT;
 
 api.use(Limiter);
 
-api.use("/", (res: Response) => {
-  return res.redirect("/v1");
-});
-
 api.use("/v1", RouteV1);
 
 api.use(NotFound);
