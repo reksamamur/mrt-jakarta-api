@@ -25,6 +25,8 @@ export class MRTClient extends MRTBaseClient {
               peta_lokalitas: obj.peta_lokalitas,
               banner: obj.banner,
               urutan: obj.urutan,
+              image: obj.image,
+              descriptions: obj.descriptions,
             };
           });
           return resolve(station);
@@ -55,6 +57,8 @@ export class MRTClient extends MRTBaseClient {
             banner: find.banner,
             catatan: find.catatan,
             peta_lokalitas: find.peta_lokalitas,
+            image: obj.image,
+            descriptions: obj.descriptions,
           };
 
           return resolve(dStation);

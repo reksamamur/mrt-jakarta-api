@@ -1,3 +1,5 @@
+import { StationDescriptions } from "../station_description";
+
 export interface Station {
   nid: string;
   title: string;
@@ -7,4 +9,6 @@ export interface Station {
   catatan: string | null;
   peta_lokalitas: string;
   banner: string;
+  image: string;
+  descriptions: StationDescriptions[]
 }

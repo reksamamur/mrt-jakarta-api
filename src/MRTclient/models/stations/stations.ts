@@ -2,6 +2,7 @@ import { Schedules } from "../schedules";
 import { Retails } from "../retails";
 import { Estimates } from "../estimates";
 import { Facilities } from "../facilities";
+import { StationDescriptions } from "../station_description";
 
 export interface Stations {
   nid: string;
@@ -16,4 +17,6 @@ export interface Stations {
   retails: Retails[];
   estimasi: Estimates[];
   fasilitas: Facilities[];
+  image: string;
+  descriptions: StationDescriptions[];
 }
