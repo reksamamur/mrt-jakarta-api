@@ -57,8 +57,8 @@ export class MRTClient extends MRTBaseClient {
             banner: find.banner,
             catatan: find.catatan,
             peta_lokalitas: find.peta_lokalitas,
-            image: obj.image,
-            descriptions: obj.descriptions,
+            image: find.image,
+            descriptions: find.descriptions,
           };
 
           return resolve(dStation);
