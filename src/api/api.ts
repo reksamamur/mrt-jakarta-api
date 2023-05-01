@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 
 import { RouteV1, NotFound, Limiter } from "./v1";
 
@@ -7,6 +8,8 @@ dotenv.config();
 
 const api = express();
 const port = process.env.PORT;
+
+api.use(cors)
 
 api.use(Limiter);
 
