@@ -9,7 +9,7 @@ dotenv.config();
 const api = express();
 const port = process.env.PORT;
 
-api.use(cors)
+api.use(cors())
 
 api.use(Limiter);
 
